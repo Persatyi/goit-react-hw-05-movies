@@ -1,3 +1,5 @@
+import Navigation from 'components/Navigation/Navigation';
+
 export const App = () => {
-  return <p>Hello World!</p>;
+  return <Navigation />;
 };

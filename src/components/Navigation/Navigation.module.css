@@ -1,0 +1,16 @@
+.link {
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  color: black;
+}
+
+.link:not(:last-child) {
+  margin-right: 10px;
+}
+
+.activeLink {
+  composes: link;
+  color: blue;
+}
