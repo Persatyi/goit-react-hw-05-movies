@@ -1,4 +1,4 @@
-import { NavLink, Route, useParams } from 'react-router-dom';
+import { NavLink, Route, useParams, useRouteMatch } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import api from 'components/services/ApiService';
 import Cast from 'components/Views/Cast/Cast';
@@ -6,6 +6,7 @@ import Reviews from 'components/Views/Reviews/Reviews';
 import notFoundImg from 'img/not_found_ver.jpg';
 
 const MovieDetailsPage = () => {
+  const { url } = useRouteMatch();
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
 
@@ -42,8 +43,16 @@ const MovieDetailsPage = () => {
           <p>{movie.genres.map(({ name }) => name).join(' ')}</p>
         </>
       )}
-      <NavLink to="/movies/:movieId/cast">Cast</NavLink>
-      <NavLink to="/movies/:movieId/reviews">Reviews</NavLink>
+      <hr />
+      <ul>
+        <li>
+          <NavLink to={`${url}/cast`}>Cast</NavLink>
+        </li>
+        <li>
+          <NavLink to={`${url}/reviews`}>Reviews</NavLink>
+        </li>
+      </ul>
+      <hr />
       <Route path="/movies/:movieId/cast">
         <Cast />
       </Route>

@@ -6,6 +6,7 @@ class ApiService {
   #API_KEY = 'bb3168696e35626f9e0ec9a6cc22697e';
   page = 1;
   searchQuery = '';
+  movieId = '';
 
   async fetchTrendingMovies() {
     try {
@@ -22,6 +23,17 @@ class ApiService {
     try {
       const response = await axios.get(
         `/movie/${id}?api_key=${this.#API_KEY}&language=en-US`
+      );
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async fetchMovieDetails(data) {
+    try {
+      const response = await axios.get(
+        `/movie/${this.movieId}/${data}?api_key=${this.#API_KEY}&language=en-US`
       );
       return response.data;
     } catch (error) {
