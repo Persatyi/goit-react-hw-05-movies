@@ -11,7 +11,7 @@ class ApiService {
   async fetchTrendingMovies() {
     try {
       const response = await axios.get(
-        `/trending/movies/day?api_key=${this.#API_KEY}&page=${this.page}`
+        `/trending/movies/day?api_key=${this.#API_KEY}`
       );
       return response.data.results;
     } catch (error) {
@@ -30,12 +30,36 @@ class ApiService {
     }
   }
 
-  async fetchMovieDetails(data) {
+  async fetchMovieCast(data) {
     try {
       const response = await axios.get(
         `/movie/${this.movieId}/${data}?api_key=${this.#API_KEY}&language=en-US`
       );
-      return response.data;
+      return response.data.cast;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async fetchMovieReviews(data) {
+    try {
+      const response = await axios.get(
+        `/movie/${this.movieId}/${data}?api_key=${this.#API_KEY}&language=en-US`
+      );
+      return response.data.results;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async fetchMovieByKeyWord() {
+    try {
+      const response = await axios.get(
+        `search/movie/?api_key=${this.#API_KEY}&query=${
+          this.searchQuery
+        }&language=en-US`
+      );
+      return response.data.results;
     } catch (error) {
       console.log(error);
     }

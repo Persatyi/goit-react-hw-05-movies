@@ -46,6 +46,9 @@ const MovieDetailsPage = () => {
       <hr />
       <ul>
         <li>
+          <p>Additional information</p>
+        </li>
+        <li>
           <NavLink to={`${url}/cast`}>Cast</NavLink>
         </li>
         <li>
@@ -53,6 +56,7 @@ const MovieDetailsPage = () => {
         </li>
       </ul>
       <hr />
+
       <Route path="/movies/:movieId/cast">
         <Cast />
       </Route>
