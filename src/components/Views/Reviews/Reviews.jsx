@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import api from 'components/services/ApiService';
 import s from './Reviews.module.css';
+import PropTypes from 'prop-types';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -32,6 +33,10 @@ const Reviews = () => {
       )}
     </ul>
   );
+};
+
+Reviews.propTypes = {
+  reviews: PropTypes.array,
 };
 
 export default Reviews;

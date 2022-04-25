@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import s from './HomePage.module.css';
 import notFoundImg from '../../../img/not_found_ver.jpg';
+import PropTypes from 'prop-types';
 
 const HomePage = props => {
   const location = useLocation();
@@ -50,6 +51,10 @@ const HomePage = props => {
       </ul>
     </section>
   );
+};
+
+HomePage.propTypes = {
+  movies: PropTypes.array.isRequired,
 };
 
 export default HomePage;

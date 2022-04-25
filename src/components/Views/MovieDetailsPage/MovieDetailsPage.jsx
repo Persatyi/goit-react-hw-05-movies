@@ -11,6 +11,7 @@ import api from 'components/services/ApiService';
 import s from './MovieDetailsPage.module.css';
 import notFoundImg from 'img/not_found_ver.jpg';
 import { Audio } from 'react-loader-spinner';
+import PropTypes from 'prop-types';
 const Cast = lazy(() => import('../Cast/Cast' /* webpackChunkName: "cast" */));
 const Reviews = lazy(() =>
   import('../Reviews/Reviews' /* webpackChunkName: "reviews" */)
@@ -33,10 +34,13 @@ const MovieDetailsPage = () => {
   const prevPage = () => {
     let checkLocation = '/';
 
-    if (location?.state?.pathname && location?.state?.search) {
-      checkLocation = `${location?.state?.pathname}${location?.state?.search}`;
-    } else if (location?.state?.pathname) {
-      checkLocation = `${location?.state?.pathname}`;
+    const pathname = location?.state?.pathname;
+    const search = location?.state?.search;
+
+    if (pathname && search) {
+      checkLocation = `${pathname}${search}`;
+    } else if (pathname) {
+      checkLocation = `${pathname}`;
     }
 
     history.push(checkLocation);
@@ -145,6 +149,10 @@ const MovieDetailsPage = () => {
       </Suspense>
     </section>
   );
+};
+
+MovieDetailsPage.propTypes = {
+  movie: PropTypes.object,
 };
 
 export default MovieDetailsPage;

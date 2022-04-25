@@ -3,6 +3,7 @@ import { useEffect, useState, Suspense, lazy } from 'react';
 import s from './MoviesPage.module.css';
 import api from 'components/services/ApiService';
 import { Audio } from 'react-loader-spinner';
+import PropTypes from 'prop-types';
 const HomePage = lazy(() => import('components/Views/HomePage/HomePage'));
 
 const MoviesPage = () => {
@@ -69,6 +70,10 @@ const MoviesPage = () => {
       )}
     </section>
   );
+};
+
+MoviesPage.propTypes = {
+  movies: PropTypes.array,
 };
 
 export default MoviesPage;
