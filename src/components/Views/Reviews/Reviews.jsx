@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import api from 'components/services/ApiService';
+import s from './Reviews.module.css';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -12,12 +13,12 @@ const Reviews = () => {
   }, [movieId]);
 
   return (
-    <ul>
+    <ul className={s.list}>
       {reviews.length ? (
         reviews.map(({ author, content, author_details, id }) => {
           return (
-            <li key={id}>
-              <h3>{author || author_details.name}</h3>
+            <li key={id} className={s.item}>
+              <h3 className={s.author}>{author || author_details.name}</h3>
               <p>
                 {content || 'oops, there is no content from this author...'}
               </p>

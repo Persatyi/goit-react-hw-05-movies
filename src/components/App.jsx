@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { useEffect, useState, lazy, Suspense } from 'react';
 import api from 'components/services/ApiService';
 import Navigation from 'components/Navigation/Navigation';
@@ -16,10 +16,10 @@ const MovieDetailsPage = lazy(() =>
 );
 
 export const App = () => {
-  const [trending, setTrending] = useState(null);
+  const [movies, setMovies] = useState(null);
 
   useEffect(() => {
-    api.fetchTrendingMovies().then(setTrending);
+    api.fetchTrendingMovies().then(setMovies);
   }, []);
 
   return (
@@ -27,12 +27,18 @@ export const App = () => {
       <Navigation />
       <Suspense
         fallback={
-          <Audio height="100" width="100" color="grey" ariaLabel="loading" />
+          <Audio
+            height="100"
+            width="100"
+            color="#465298"
+            ariaLabel="loading"
+            wrapperClass="loading"
+          />
         }
       >
         <Switch>
           <Route path="/" exact>
-            <HomePage trending={trending} />
+            <HomePage movies={movies} />
           </Route>
           <Route path="/movies" exact>
             <MoviesPage />
@@ -40,6 +46,7 @@ export const App = () => {
           <Route path="/movies/:movieId">
             <MovieDetailsPage />
           </Route>
+          <Redirect to="/" />
         </Switch>
       </Suspense>
     </>

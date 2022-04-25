@@ -1,0 +1,12 @@
+.list {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.author {
+  margin-bottom: 10px;
+}

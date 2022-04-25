@@ -1,3 +1,84 @@
+.section {
+  padding: 10px;
+}
+
 .backBtn {
-  display: block;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #465298;
+  background-color: blueviolet;
+  border-radius: 8px;
+  border: none;
+  transition: color 250ms linear;
+}
+
+.backBtn:hover,
+.backBtn:focus {
+  color: #ffffff;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.contentWrapper {
+  padding: 20px;
+}
+
+.mainTitle {
+  margin-bottom: 20px;
+}
+
+.rating {
+  margin-bottom: 20px;
+}
+
+.overview {
+  margin-bottom: 10px;
+}
+
+.genres {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.addon {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.addonInfoWrapper {
+  display: flex;
+}
+
+.cast {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-right: 10px;
+  font-weight: 500;
+  color: #465298;
+  background-color: blueviolet;
+  border-radius: 8px;
+  transition: color 250ms linear;
+}
+
+.cast:hover,
+.cast:focus {
+  color: #ffffff;
+}
+
+.reviews {
+  composes: cast;
+  margin-right: 0px;
+}
+
+.active {
+  color: #ffffff;
 }

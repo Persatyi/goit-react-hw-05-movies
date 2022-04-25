@@ -1,0 +1,28 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  margin: 10px;
+  width: 200px;
+}
+
+.img {
+  margin-bottom: 10px;
+}
+
+.name {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.character {
+  display: block;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.characterWrap {
+  display: flex;
+}

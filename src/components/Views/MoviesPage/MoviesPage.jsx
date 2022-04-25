@@ -1,6 +1,9 @@
-import { Link, useHistory, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import { useEffect, useState, Suspense, lazy } from 'react';
+import s from './MoviesPage.module.css';
 import api from 'components/services/ApiService';
+import { Audio } from 'react-loader-spinner';
+const HomePage = lazy(() => import('components/Views/HomePage/HomePage'));
 
 const MoviesPage = () => {
   const history = useHistory();
@@ -32,9 +35,10 @@ const MoviesPage = () => {
   }, [query]);
 
   return (
-    <>
-      <form onSubmit={findMovie}>
+    <section className={s.section}>
+      <form className={s.form} onSubmit={findMovie}>
         <input
+          className={s.input}
           onChange={e => {
             setValue(e.target.value);
           }}
@@ -44,21 +48,26 @@ const MoviesPage = () => {
           autoFocus
           placeholder="Search movies"
         />
-        <button type="submit">
+        <button type="submit" className={s.button}>
           <span>Search</span>
         </button>
       </form>
-      <ul>
-        {!!movies.length &&
-          movies.map(({ id, title, original_title }) => {
-            return (
-              <li key={id}>
-                <Link to={`/movies/${id}`}>{title || original_title}</Link>
-              </li>
-            );
-          })}
-      </ul>
-    </>
+      {!!movies.length && (
+        <Suspense
+          fallback={
+            <Audio
+              height="100"
+              width="100"
+              color="#465298"
+              ariaLabel="loading"
+              wrapperClass="loading"
+            />
+          }
+        >
+          <HomePage movies={movies} />
+        </Suspense>
+      )}
+    </section>
   );
 };
 
