@@ -9,8 +9,10 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    api.movieId = movieId;
-    api.fetchMovieReviews('reviews').then(setReviews);
+    if (movieId) {
+      api.movieId = movieId;
+      api.fetchMovieReviews('reviews').then(setReviews);
+    }
   }, [movieId]);
 
   return (

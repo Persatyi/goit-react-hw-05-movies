@@ -9,9 +9,12 @@ const Cast = () => {
   const [credits, setCredits] = useState([]);
 
   useEffect(() => {
-    api.movieId = movieId;
-    api.fetchMovieCast('credits').then(setCredits);
+    if (movieId) {
+      api.movieId = movieId;
+      api.fetchMovieCast('credits').then(setCredits);
+    }
   }, [movieId]);
+
   return (
     <ul className={s.list}>
       {credits.length ? (

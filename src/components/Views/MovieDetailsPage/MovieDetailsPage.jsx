@@ -28,7 +28,9 @@ const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    api.fetchMoviesById(movieId).then(setMovie);
+    if (movieId) {
+      api.fetchMoviesById(movieId).then(setMovie);
+    }
   }, [movieId]);
 
   const prevPage = () => {

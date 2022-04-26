@@ -28,12 +28,10 @@ const MoviesPage = () => {
   };
 
   useEffect(() => {
-    if (!query) {
-      return;
+    if (query) {
+      api.searchQuery = query;
+      api.fetchMovieByKeyWord().then(setMovies);
     }
-
-    api.searchQuery = query;
-    api.fetchMovieByKeyWord().then(setMovies);
   }, [query]);
 
   return (
