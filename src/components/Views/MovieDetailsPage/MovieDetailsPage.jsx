@@ -24,8 +24,11 @@ const MovieDetailsPage = () => {
   const { url } = useRouteMatch();
   const { movieId } = useParams();
   const location = useLocation();
+  console.log('🚀 ~ location', location);
   const history = useHistory();
+  console.log('🚀 ~ history', history);
   const [movie, setMovie] = useState(null);
+  console.log('🚀 ~ movie', movie);
 
   useEffect(() => {
     if (movieId) {

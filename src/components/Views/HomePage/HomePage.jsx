@@ -54,7 +54,7 @@ const HomePage = props => {
 };
 
 HomePage.propTypes = {
-  movies: PropTypes.array.isRequired,
+  movies: PropTypes.array,
 };
 
 export default HomePage;
