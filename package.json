@@ -1,5 +1,4 @@
 {
-  "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -19,6 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "netlify deploy -p",
     "lint:js": "eslint src/**/*.{js,jsx}"
   },
   "eslintConfig": {

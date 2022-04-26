@@ -14,6 +14,7 @@ const MoviesPage = () => {
   const searchLocation = location.search;
   const params = new URLSearchParams(searchLocation);
   const query = params.get('query');
+  console.log('🚀 ~ query', query);
 
   const findMovie = e => {
     e.preventDefault();
